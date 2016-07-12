@@ -1,0 +1,13 @@
+<%= form_for @post do |f| %>
+<div>
+	<%=f.label :title, "Titulo" %>
+	<%=f.text_field :title, placeholder: "Titulo del post" %>
+</div>
+<div>
+	<%=f.label :content, "Contenido"%>	
+	<%=f.text_field :content, placeholder:"Contenido"%>	
+</div>
+<div>
+	<%=f.submit  %>
+</div>
+<% end %>
