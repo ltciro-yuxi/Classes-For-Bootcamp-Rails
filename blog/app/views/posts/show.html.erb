@@ -2,10 +2,4 @@
 <p><%=@post.content %></p>
  
  <%=link_to "Crear comentario", new_post_comment_path(@post)%>
-<ul>
-	<% @comments.each do |comment|%>
-		<li>
-			<%=comment.content%>
-		</li>
-	<%end%>
-</ul>
+<%= render :partial => '/comments/comment'%>
