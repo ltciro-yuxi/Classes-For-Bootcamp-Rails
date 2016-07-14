@@ -1,0 +1,12 @@
+<h1> <%= @tower.name %> </h1>
+<%=link_to "crear",  new_tower_apartment_path(@tower)%>
+<ul>
+	<%@apartments.each do |apartment|%>
+	<li>
+		<%= apartment.name %>
+		<%= apartment.floor %>
+<%=link_to "editar",  edit_tower_apartment_path(@tower, apartment)%>
+<%=link_to "borrar",  tower_apartment_path(@tower,apartment), method: :delete, data:{confirm:"esta seguro?"}  %>
+	</li>
+	<%end%>
+</ul>

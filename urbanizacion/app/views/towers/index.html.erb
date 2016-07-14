@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Towers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Porte</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @towers.each do |tower| %>
+      <tr>
+        <td><%= tower.name %></td>
+        <td><%= tower.porte %></td>
+        <td><%= link_to 'Show', tower %></td>
+        <td><%= link_to 'Edit', edit_tower_path(tower) %></td>
+        <td><%= link_to 'Destroy', tower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Apartamentos', tower_apartments_path(tower) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tower', new_tower_path %>
