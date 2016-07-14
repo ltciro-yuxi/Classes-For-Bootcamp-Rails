@@ -1,0 +1,64 @@
+
+<div class=" well well-sm col-md-12">
+	<h1> 	
+		<%= link_to "Torre",towers_path, class: "label label-default"%>
+		<small> <%= @tower.nombre%> </small>
+	</h1>
+	<h3> Apartamentos </h3>
+</div>
+
+<div class="col-md-4">
+	<%= link_to "Nuevo Apartamento", new_tower_apartment_path, remote: true,
+	class: "btn btn-primary" %>
+</div>
+
+<% unless @apartments.empty? %> 
+<article class="col-md-12">
+
+	<div class="panel panel-default  ">
+
+		<div class="panel-heading col-md-12">
+
+			<span class=" panel-title col-md-4">Apartamento</span>
+			<span class="panel-title col-md-4">Piso</span>
+			<span class="panel-title col-md-1">Editar</span>
+			<span class="panel-title col-md-1">Eliminar</span>
+			<span class="panel-title col-md-2">Personas</span>
+
+		</div>
+
+		<div class="panel-body ">
+			<ul  class="list-group col-md-12">
+
+				<% @apartments.each do |apartment| %>	
+				<li class="list-group-item col-md-12">
+					<span class="col-md-4"><%= apartment.nombre%></span>
+					<span class="col-md-4"><%= apartment.piso%></span>
+					<%cuentaA=apartment.people.count %> 
+					<div class="col-md-1 text-center" > 
+						<%= link_to "", edit_tower_apartment_path(@tower,apartment), remote: true, class: "btn btn-default glyphicon glyphicon-edit" %>
+					</div>
+					<div class="col-md-1 text-center" > 
+						<% if cuentaA>0 %>
+						<%= render "layouts/alertnodelete" %>
+						<button type="button" class="btn btn-danger glyphicon glyphicon-remove-circle" data-toggle="modal" data-target="#alert"></button>
+						<% else %>
+						
+						<%= link_to "" ,tower_apartment_path(@tower,apartment), method: :delete, data:{confirm: "Estas seguro?"},class: "btn btn-danger glyphicon glyphicon-remove-circle" %>
+						
+						<% end %>
+					</div>
+
+					<div class="col-md-2 text-center" > 						
+						<%= link_to " #{cuentaA} " ,tower_apartment_people_path(@tower,apartment), class: "btn btn-info glyphicon glyphicon-new-window" %>
+					</div>	
+
+				</li>
+				<% end %>	
+			</ul>
+			<% end %>
+		</div>
+	</div>
+</article>
+
+<div id="apartment-modal" class="modal fade"></div>

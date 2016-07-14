@@ -1,0 +1,45 @@
+<div class=" well well-sm col-md-12">
+	<h1> <%= link_to "Torre",towers_path, class: "label label-default"%>
+	<small> <%= @tower.nombre%> </small> 
+	 <%= link_to "Apartamento",tower_apartments_path, class: "label label-default"%>
+	 <small> <%= @apartment.nombre%> </small></h1>
+	<h3> Personas</h3>
+</div>
+
+<div class="col-md-4">
+	<%= link_to "Nueva Persona", new_tower_apartment_person_path, remote: true,
+	class: "btn btn-primary" %>
+</div>
+
+
+<% unless @people.empty? %> 
+<article class="col-md-12">
+
+	<div class="panel panel-default  ">
+
+		<div class="panel-heading col-md-12">
+
+			<span class=" panel-title col-md-4">Identificacion</span>
+			<span class="panel-title col-md-4">Persona</span>
+			<span class="panel-title col-md-2">Editar</span>
+			<span class="panel-title col-md-2">Eliminar</span>
+		</div>
+
+		<div class="panel-body ">
+			<ul  class="list-group col-md-12">
+
+				<% @people.each do |person| %>	
+				<li class="list-group-item col-md-12">
+					<span class="col-md-4"><%= person.ident%></span>
+					<span class="col-md-4"><%= person.nombre%></span>
+					<div class="col-md-2 " > 
+						<%= link_to "", edit_tower_apartment_person_path(@tower,@apartment,person), remote: true, class: "btn btn-default glyphicon glyphicon-edit" %>
+					</div>
+					<div class="col-md-2 " > 
+						<%= link_to "" ,tower_apartment_person_path(@tower,@apartment,person), method: :delete, data:{confirm: "Estas seguro?"},class: "btn btn-danger glyphicon glyphicon-remove-circle" %>
+					</div>
+				</li>
+				<% end %>	
+			</ul>
+			<% end %>
+			<div id="person-modal" class="modal fade"></div>

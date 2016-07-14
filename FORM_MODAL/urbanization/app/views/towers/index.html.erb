@@ -1,0 +1,62 @@
+
+<div class=" well well-sm col-md-12">
+	<h1  > Torres </h1>
+</div>
+
+<div class="col-md-4">
+	<%= link_to "Nueva Torre", new_tower_path, remote: true, class: "btn btn-primary" %>
+</div>
+
+<% unless @towers.empty? %> 
+
+<article class="col-md-12">
+
+	<div class="panel panel-default  ">
+
+		<div class="panel-heading col-md-12">
+
+			<span class=" panel-title col-md-4">Torre</span>
+			<span class="panel-title col-md-4">Portero</span>
+			<span class="panel-title col-md-1">Editar</span>
+			<span class="panel-title col-md-1">Eliminar</span>
+			<span class="panel-title col-md-2 ">Apartamentos</span>
+
+		</div>
+
+		<div class="panel-body ">
+			<ul  class="list-group col-md-12">
+				<% @towers.each do |tower| %>	
+				<li class="list-group-item col-md-12">
+
+					<span class="col-md-4"><%= tower.nombre%></span>
+					<span class="col-md-4"><%= tower.portero%> </span>
+					<%cuenta=tower.apartments.count %>
+
+					<div class="col-md-1 text-center" > 
+						<%= link_to "", edit_tower_path(tower), remote: true, class: "btn btn-default glyphicon glyphicon-edit" %>
+					</div>
+
+					<div class="col-md-1 text-center">
+						<% if cuenta>0 %>
+						<%= render "layouts/alertnodelete" %>
+						<button type="button" class="btn btn-danger glyphicon glyphicon-remove-circle" data-toggle="modal" data-target="#alert"></button>
+						
+						<% else %>
+						<%= link_to "" ,tower_path(tower), method: :delete, 						
+						data:{  confirm: "Estas seguro?"}	,class: "btn btn-danger glyphicon glyphicon-remove-circle " %>
+						<%end%>
+					</div>
+
+					<div class="col-md-2 text-center">					
+						<%= link_to "  #{ cuenta } " ,tower_apartments_path(tower), class: "btn btn-info glyphicon glyphicon-new-window" %>
+					</div>
+
+				</li>
+				<% end %>	
+			</ul>
+		</div>
+
+	</article>
+	<% end %>
+
+	<div id="tower-modal" class="modal fade"></div>

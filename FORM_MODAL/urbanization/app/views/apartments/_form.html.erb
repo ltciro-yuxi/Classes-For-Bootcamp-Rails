@@ -1,0 +1,27 @@
+
+<div class="modal-dialog" >
+	<div class="modal-content">
+		<%= form_for [@tower, @apartment]  do |f| %>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title">Formulario</h4>
+		</div>
+		<div class="modal-body">		
+			<p>
+				<%= f.label :nombre, "Apartamento" %><br>
+				<%= f.text_field :nombre,placeholder:"nombre",class:"form-control" %>
+			</p>
+			<p>
+				<%= f.label :piso, "Piso" %><br>
+				<%= f.text_field :piso,placeholder:"numero de piso",class:"form-control" %>
+			</p>	
+
+		</div>
+		<div class="ajax-loader"></div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			<%= f.submit class: "btn btn-primary"  %>			
+		</div>
+		<% end %>
+	</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
