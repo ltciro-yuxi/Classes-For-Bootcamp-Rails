@@ -4,7 +4,23 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @productos = Product.all
+    #@productos = Product.find(10)
+    #@productos = Product.take(10)
+    #@productos = Product.first
+    #@productos = Product.last
+    #@productos = Product.find_by_color("rojo")
+    #@productos = Product.where(talla: ["s", "l"])   
+    #@productos = Product.where.not(talla: ["s", "l"])
+    #@productos = Product.order(:marca)
+    #@productos = Product.select(:costo, :total)
+    #@productos = Product.limit(3).offset(10)
+    #@productos = Product.group(:talla)    
+    #@productos = Product.group(:marca).having("sum(costo) < ?", 2000)
+    #@productos = Product.all.readonly
+    #@productos = Product.where("color = ? OR marca = ?", "rojo", "polo")
+    #@productos = Product.where("descripcion like  ? ",  "%#{params[:consulta]}%")
+    #pluck, sum, minimum, maximum, average
   end
 
   # GET /products/1

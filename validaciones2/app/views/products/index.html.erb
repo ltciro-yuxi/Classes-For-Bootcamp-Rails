@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+    <th>id</th>
       <th>Marca</th>
       <th>Talla</th>
       <th>Referencia</th>
@@ -16,14 +17,16 @@
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>
+    <% @productos.each do |product| %>
       <tr>
+      <td><%= product.id %></td>
         <td><%= product.marca %></td>
         <td><%= product.talla %></td>
         <td><%= product.referencia %></td>
         <td><%= product.color %></td>
         <td><%= product.costo %></td>
         <td><%= product.total %></td>
+        <td><%= product.descripcion %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>

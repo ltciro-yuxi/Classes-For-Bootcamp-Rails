@@ -5,3 +5,26 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Product.create(marca:"polo", talla:"s", referencia:"234",
+	              color:"Rojo", costo:800, descripcion:"camisa americana")
+
+Product.create(marca:"polo", talla:"s", referencia:"234",
+	              color:"rojo", costo:800, descripcion:"camisa americana")
+
+Product.create(marca:"americano", talla:"m", referencia:"234",
+	              color:"azul", costo:200, descripcion:"camisa americana")
+Product.create(marca:"americano", talla:"s", referencia:"234",
+	              color:"verde", costo:800, descripcion:"camisa americana")
+
+Product.create(marca:"polo", talla:"s", referencia:"234",
+	              color:"verde", costo:800, descripcion:"camisa americana")
+
+Product.create(marca:"nonita", talla:"l", referencia:"234",
+	              color:"azul", costo:100, descripcion:"camisa americana")
+
+Product.create(marca:"polo", talla:"s", referencia:"234",
+	              color:"verde", costo:2000, descripcion:"polo")
+
+Product.create(marca:"adida", talla:"m", referencia:"238",
+	              color:"rojo", costo:1000, descripcion:"adidas")
